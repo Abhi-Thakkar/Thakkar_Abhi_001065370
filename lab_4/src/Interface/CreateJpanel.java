@@ -103,9 +103,14 @@ public class CreateJpanel extends javax.swing.JPanel {
         jComboBox2 = new javax.swing.JComboBox();
         imagejLabel = new javax.swing.JLabel();
 
+        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+
         CreatepersonalprofileJlabel.setFont(new java.awt.Font("Lucida Grande", 3, 18)); // NOI18N
         CreatepersonalprofileJlabel.setText("CREATE A PERSONAL PROFILE");
 
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+
+        FirstnameJlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         FirstnameJlabel.setText("First Name:");
 
         FirstnameJtextfield.addActionListener(new java.awt.event.ActionListener() {
@@ -114,53 +119,92 @@ public class CreateJpanel extends javax.swing.JPanel {
             }
         });
 
+        lastnameJlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         lastnameJlabel.setText("Last Name:");
 
+        PhonenumberJlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         PhonenumberJlabel.setText("Phone Number:");
 
+        SsnJlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         SsnJlabel.setText("SSN:");
 
+        DobJlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         DobJlabel.setText("DOB(dd/mm/yyyy)");
 
+        AgeJlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         AgeJlabel.setText("Age:");
 
         GeneralinformationJlabel.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         GeneralinformationJlabel.setText("1.GENERAL INFORMATION:");
 
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+
+        AddressinformationJlabel.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         AddressinformationJlabel.setText("2.ADDRESS INFORMATION:");
 
+        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
+
+        StreetJlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         StreetJlabel.setText("Street:");
 
+        CityJlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         CityJlabel.setText("City:");
 
+        StateJlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         StateJlabel.setText("State:");
 
+        ZipcodeJlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         ZipcodeJlabel.setText("Zipcode:");
 
+        jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
+
+        BankaccountinformationJlabel.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         BankaccountinformationJlabel.setText("3.BANK ACCOUNT INFORMATION:");
 
+        jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
+
+        Bankname1Jlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         Bankname1Jlabel.setText("Bank Name:");
 
+        Type1jlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         Type1jlabel.setText("Type(Saving/Checking):");
 
+        balance1Jlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         balance1Jlabel.setText("Balance:");
 
+        Account1Jlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         Account1Jlabel.setText("Account#:");
 
+        Routing1jlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         Routing1jlabel.setText("Routing:");
 
+        jSeparator7.setBackground(new java.awt.Color(0, 0, 0));
+
+        Bankname2Jlabel1.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         Bankname2Jlabel1.setText("Bank Name:");
 
+        Account2jlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         Account2jlabel.setText("Account#:");
 
+        Type2Jlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         Type2Jlabel.setText("Type(Saving/Checking):");
 
+        Routing2Jlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         Routing2Jlabel.setText("Routing:");
 
+        balance2Jlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         balance2Jlabel.setText("Balance:");
 
+        jSeparator8.setBackground(new java.awt.Color(0, 0, 0));
+
+        DriverlicenseinformationJlabel.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         DriverlicenseinformationJlabel.setText("4.DRIVIER LICENSE INFORMATION:");
 
+        jSeparator9.setBackground(new java.awt.Color(0, 0, 0));
+
+        AdddriverlicenseJbutton.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         AdddriverlicenseJbutton.setText("Add driver license");
         AdddriverlicenseJbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,16 +212,25 @@ public class CreateJpanel extends javax.swing.JPanel {
             }
         });
 
+        MedicalinformationJlabel.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         MedicalinformationJlabel.setText("5.MEDICAL INFORMATION");
 
+        jSeparator10.setBackground(new java.awt.Color(0, 0, 0));
+
+        MedicalrecordJlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         MedicalrecordJlabel.setText("Medical Record#:");
 
+        Alergy1Jlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         Alergy1Jlabel.setText("Allergy1:");
 
+        Alregy2label.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         Alregy2label.setText("Alergy2:");
 
+        Alergy3Jlabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         Alergy3Jlabel.setText("Alergy3:");
 
+        CreateprofileJbutton.setBackground(new java.awt.Color(153, 153, 153));
+        CreateprofileJbutton.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         CreateprofileJbutton.setText("CREATE PROFILE");
         CreateprofileJbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,6 +249,7 @@ public class CreateJpanel extends javax.swing.JPanel {
             }
         });
 
+        imagejLabel.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         imagejLabel.setText("No image uploaded");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -492,7 +546,7 @@ public class CreateJpanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -39,6 +39,8 @@ public class MainJframe extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        CrontrolJpanel.setBackground(new java.awt.Color(204, 204, 204));
+
         CreateJbutton.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         CreateJbutton.setText("CREATE");
         CreateJbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +65,7 @@ public class MainJframe extends javax.swing.JFrame {
                 .addGroup(CrontrolJpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(VeiwJbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(CreateJbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 3, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         CrontrolJpanelLayout.setVerticalGroup(
             CrontrolJpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,6 +78,8 @@ public class MainJframe extends javax.swing.JFrame {
         );
 
         jSplitPane1.setLeftComponent(CrontrolJpanel);
+
+        DisplayJpanel.setBackground(new java.awt.Color(153, 153, 153));
 
         javax.swing.GroupLayout DisplayJpanelLayout = new javax.swing.GroupLayout(DisplayJpanel);
         DisplayJpanel.setLayout(DisplayJpanelLayout);
