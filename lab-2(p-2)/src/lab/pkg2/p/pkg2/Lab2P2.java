@@ -28,11 +28,13 @@ public class Lab2P2 {
         int i=1;
         
         while(i==1){
+            System.out.println(" ");
             System.out.println("1)Create patient ");
             System.out.println("2)History of the patient");
             System.out.println("3)Check Abnormal Vital Signs of the patient");
             System.out.println("4)Update new Vital Signs of the patient");
             System.out.println("5)Quit");
+            System.out.println(" ");
             int a=scan.nextInt();
             if(a==1){
                 index++;
@@ -72,16 +74,16 @@ public class Lab2P2 {
         patient[m].setHeart_rate(scan.nextInt());
         
         System.out.println("Enter the Weight(Killos):");
-        patient[m].setWeight_killos(scan.nextInt());
+        patient[m].setWeight_killos(scan.nextDouble());
         
         System.out.println("Enter the Weight(pounds):");
-        patient[m].setWeight_pounds(scan.nextInt());
+        patient[m].setWeight_pounds(scan.nextDouble());
         
         
         if(PatientStatus(m)==false){
-            System.out.println("Abnormal");
+            System.out.println("CONDITION IS ABNORMAL");
         }else if(PatientStatus(m)==true){
-            System.out.println("Normal");
+            System.out.println("CONDITION IS NORMAL");
         }
        
         
@@ -104,12 +106,15 @@ public class Lab2P2 {
     static void Information(int i){
         System.out.println(patient[i].getName());
            for(int l=0;l<patient[i].age.size();l++){
-                System.out.println("Visit:"+(l+1)+":Age:"+patient[i].age.get(l));
-                System.out.println("Visit:"+(l+1)+":Heart Rate:"+patient[i].heartrate.get(l));
-                System.out.println("Visit:"+(l+1)+":Respirotary Rate:"+patient[i].respiratoryrate.get(l));
-                System.out.println("Visit:"+(l+1)+":Blood Pressure:"+patient[i].bloodpressure.get(l));
-                System.out.println("Visit:"+(l+1)+":Weight in KGs:"+patient[i].weightkillos.get(l));
-                System.out.println("Visit:"+(l+1)+":Weight in LBs:"+patient[i].weightpounds.get(l));
+               System.out.println(" ");
+               System.out.println("Visit number:"+(l+1));
+                System.out.println("Age:"+patient[i].age.get(l));
+                System.out.println("Heart Rate:"+patient[i].heartrate.get(l));
+                System.out.println("Respirotary Rate:"+patient[i].respiratoryrate.get(l));
+                System.out.println("Blood Pressure:"+patient[i].bloodpressure.get(l));
+                System.out.println("Weight in KGs:"+patient[i].weightkillos.get(l));
+                System.out.println("VisitWeight in LBs:"+patient[i].weightpounds.get(l));
+                System.out.println(" ");
             }   
         
         
@@ -142,11 +147,11 @@ public class Lab2P2 {
         System.out.println("Enter the new Heart Rate:");
         patient[m].setHeart_rate(scan.nextInt());
         
-        System.out.println("Enter the new Weight(Kgs):");
-        patient[m].setWeight_killos(scan.nextInt());
+        System.out.println("Enter the new Weight in killos:");
+        patient[m].setWeight_killos(scan.nextDouble());
         
-        System.out.println("Enter the new Weight(lbs):");
-        patient[m].setWeight_pounds(scan.nextInt());
+        System.out.println("Enter the new Weight in pounds:");
+        patient[m].setWeight_pounds(scan.nextDouble());
     
         
         if(PatientStatus(m)==false){
@@ -179,50 +184,50 @@ public class Lab2P2 {
             System.out.println("Enter Respiratory Rate to check:");
             int res_rate=scan.nextInt();
             if(Respiratoryrate(patient[o].getAge(),res_rate)==false){
-                System.out.println("ABNORMAl");
+                System.out.println("CONDITION IS ABNORMAl");
                 abc++;
             }else if(Respiratoryrate(patient[o].getAge(),res_rate)==true){
-                System.out.println("Normal");
+                System.out.println("CONDITION IS NORMAL");
                 abc++;
             }          
         }else  if (sign.equals("Heart_Rate")==true) {
             System.out.println("Enter Heart Rate to check:");
             int heart_rate=scan.nextInt();
             if(Heartrate(patient[o].getAge(),heart_rate)==false){
-                System.out.println("ABNORMAL");
+                System.out.println("CONDITION IS ABNORMAL");
                 abc++;
             }else if(Heartrate(patient[o].getAge(),heart_rate)==true){
-                System.out.println("Normal");
+                System.out.println("CONDITION IS NORMAL");
                 abc++;
             }          
         }else  if (sign.equals("Blood_Pressure")==true) {
             System.out.println("Enter Respiratory Rate to check:");
             int bp=scan.nextInt();
             if(bloodpressure(patient[o].getAge(),bp)==false){
-                System.out.println("ABNORMAL");
+                System.out.println("CONDITION IS ABNORMAL");
                 abc++;
             }else if(bloodpressure(patient[o].getAge(),bp)==true){
-                System.out.println("Normal");
+                System.out.println("CONDITION IS NORMAL");
                 abc++;
             }          
         }else  if (sign.equals("Weight_in_Kgs")==true) {
             System.out.println("Enter Weigth in KG to check:");
             int weight=scan.nextInt();
             if(weightkillos(patient[o].getAge(),weight)==false){
-                System.out.println("ABNORMAL");
+                System.out.println("CONDITION IS ABNORMAL");
                 abc++;
             }else if(weightkillos(patient[o].getAge(),weight)==true){
-                System.out.println("Normal");
+                System.out.println("CONDITION IS NORMAL");
                 abc++;
             }          
         }else  if (sign.equals("Weight_in_Pounds")==true) {
             System.out.println("Enter Respiratory Rate to check:");
             int weight_lbs=scan.nextInt();
             if(weightpounds(patient[o].getAge(),weight_lbs)==false){
-                System.out.println("ABNORMAL");
+                System.out.println("CONDITION ISABNORMAL");
                 abc++;
             }else if(weightpounds(patient[o].getAge(),weight_lbs)==true){
-                System.out.println("Normal");
+                System.out.println("CONDITION IS NORMAL");
                 abc++;
             }          
         }else{
@@ -448,7 +453,7 @@ public class Lab2P2 {
     static boolean PatientStatus(int p){
         
         
-        System.out.println(patient[p].getAge());
+       // System.out.println(patient[p].getAge());
         if(patient[p].getAge()>=0 && patient[p].getAge()<=1){
            
             if (patient[p].getRespiratory_rate()>=30 && patient[p].getRespiratory_rate()<=50 && 

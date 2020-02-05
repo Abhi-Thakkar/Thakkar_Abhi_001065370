@@ -18,8 +18,8 @@ public class information {
     List<Integer> respiratoryrate = new ArrayList<Integer>();
     List<Integer> bloodpressure = new ArrayList<Integer>();
     List<Integer> heartrate = new ArrayList<Integer>();
-    List<Integer> weightkillos = new ArrayList<Integer>();
-    List<Integer> weightpounds = new ArrayList<Integer>();
+    List<Double> weightkillos = new ArrayList<Double>();
+    List<Double> weightpounds = new ArrayList<Double>();
     
 
     
@@ -33,7 +33,8 @@ public class information {
     int respiratory_rate;
     int blood_pressure;
     int heart_rate;
-    int weight_killos;
+    double weight_killos;
+    double weight_pounds;
 
     public String getName() {
         return name;
@@ -42,7 +43,7 @@ public class information {
     public void setName(String name) {
         this.name = name;
     }
-    int weight_pounds;
+    
 
     public int getAge() {
         return Age;
@@ -81,20 +82,20 @@ public class information {
         this.heart_rate = heart_rate;
     }
 
-    public int getWeight_killos() {
+    public double getWeight_killos() {
         return weight_killos;
     }
 
-    public void setWeight_killos(int weight_killos) {
+    public void setWeight_killos(double weight_killos) {
         weightkillos.add(weight_killos);
         this.weight_killos = weight_killos;
     }
 
-    public int getWeight_pounds() {
+    public double getWeight_pounds() {
         return weight_pounds;
     }
 
-    public void setWeight_pounds(int weight_pounds) {
+    public void setWeight_pounds(double weight_pounds) {
         weightpounds.add(weight_pounds);
         this.weight_pounds = weight_pounds;
     }
