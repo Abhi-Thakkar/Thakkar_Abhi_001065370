@@ -450,66 +450,77 @@ public class Lab2P2 {
     
     
     
-    static boolean PatientStatus(int p){
+    static boolean PatientStatus(int s){
         
         
        // System.out.println(patient[p].getAge());
-        if(patient[p].getAge()>=0 && patient[p].getAge()<=1){
+        if(patient[s].getAge()==0){
            
-            if (patient[p].getRespiratory_rate()>=30 && patient[p].getRespiratory_rate()<=50 && 
-                    patient[p].getHeart_rate()>=120 && patient[p].getHeart_rate()<=160 && 
-                    patient[p].getBlood_pressure()>=50 && patient[p].getBlood_pressure()<=70 &&
-                    patient[p].getWeight_killos()>=2 && patient[p].getWeight_killos()<=3 &&
-                    patient[p].getWeight_pounds()>=4 && patient[p].getWeight_pounds()<=7) {
+            if (patient[s].getRespiratory_rate()>=30 && patient[s].getRespiratory_rate()<=50 && 
+                    patient[s].getHeart_rate()>=120 && patient[s].getHeart_rate()<=160 && 
+                    patient[s].getBlood_pressure()>=50 && patient[s].getBlood_pressure()<=70 &&
+                    patient[s].getWeight_killos()>=2 && patient[s].getWeight_killos()<=3 &&
+                    patient[s].getWeight_pounds()>=4.5 && patient[s].getWeight_pounds()<=7) {
                 return true;
             }else{
                 return false;
             }           
-        }else if(patient[p].getAge()>1 && patient[p].getAge()<=3){
+        }else if(patient[s].getAge()==1){
            
-            if (patient[p].getRespiratory_rate()>=20 && patient[p].getRespiratory_rate()<=30 && 
-                    patient[p].getHeart_rate()>=80 && patient[p].getHeart_rate()<=140 && 
-                    patient[p].getBlood_pressure()>=70 && patient[p].getBlood_pressure()<=100 &&
-                    patient[p].getWeight_killos()>=4 && patient[p].getWeight_killos()<=10 &&
-                    patient[p].getWeight_pounds()>=9 && patient[p].getWeight_pounds()<=22) {
+            if (patient[s].getRespiratory_rate()>=20 && patient[s].getRespiratory_rate()<=30 && 
+                    patient[s].getHeart_rate()>=80 && patient[s].getHeart_rate()<=140 && 
+                    patient[s].getBlood_pressure()>=70 && patient[s].getBlood_pressure()<=100 &&
+                    patient[s].getWeight_killos()>=4 && patient[s].getWeight_killos()<=10 &&
+                    patient[s].getWeight_pounds()>=9 && patient[s].getWeight_pounds()<=22) {
+                return true;
+            }else{
+                return false;
+            }           
+        }else if(patient[s].getAge()>=1 && patient[s].getAge()<=3){
+           
+            if (patient[s].getRespiratory_rate()>=20 && patient[s].getRespiratory_rate()<=30 && 
+                    patient[s].getHeart_rate()>=80 && patient[s].getHeart_rate()<=130 && 
+                    patient[s].getBlood_pressure()>=80 && patient[s].getBlood_pressure()<=110 &&
+                    patient[s].getWeight_killos()>=10 && patient[s].getWeight_killos()<=14 &&
+                    patient[s].getWeight_pounds()>=22 && patient[s].getWeight_pounds()<=31) {
                 return true;
             }else{
                 return false;
             }           
             
-        }else if(patient[p].getAge()>3 && patient[p].getAge()<=5){
+        }else if(patient[s].getAge()>3 && patient[s].getAge()<=5){
             
-            if (patient[p].getRespiratory_rate()>=20 && patient[p].getRespiratory_rate()<=30 && 
-                    patient[p].getHeart_rate()>=80 && patient[p].getHeart_rate()<=140 && 
-                    patient[p].getBlood_pressure()>=80 && patient[p].getBlood_pressure()<=110 &&
-                    patient[p].getWeight_killos()>=10 && patient[p].getWeight_killos()<=14 &&
-                    patient[p].getWeight_pounds()>=22 && patient[p].getWeight_pounds()<=31) {
+            if (patient[s].getRespiratory_rate()>=20 && patient[s].getRespiratory_rate()<=30 && 
+                    patient[s].getHeart_rate()>=80 && patient[s].getHeart_rate()<=120 && 
+                    patient[s].getBlood_pressure()>=80 && patient[s].getBlood_pressure()<=110 &&
+                    patient[s].getWeight_killos()>=14 && patient[s].getWeight_killos()<=18 &&
+                    patient[s].getWeight_pounds()>=31 && patient[s].getWeight_pounds()<=40) {
                 return true;
             }else{
                 return false;
             }           
             
-        }else if(patient[p].getAge()>=6 && patient[p].getAge()<=12){
+        }else if(patient[s].getAge()>=6 && patient[s].getAge()<=12){
            
-            if (patient[p].getRespiratory_rate()>=20 && patient[p].getRespiratory_rate()<=30 && 
-                    patient[p].getHeart_rate()>=80 && patient[p].getHeart_rate()<=120 && 
-                    patient[p].getBlood_pressure()>=80 && patient[p].getBlood_pressure()<=110 &&
-                    patient[p].getWeight_killos()>=20 && patient[p].getWeight_killos()<=42 &&
-                    patient[p].getWeight_pounds()>=41 && patient[p].getWeight_pounds()<=92) {
+            if (patient[s].getRespiratory_rate()>=20 && patient[s].getRespiratory_rate()<=30 && 
+                    patient[s].getHeart_rate()>=70 && patient[s].getHeart_rate()<=110 && 
+                    patient[s].getBlood_pressure()>=80 && patient[s].getBlood_pressure()<=120 &&
+                    patient[s].getWeight_killos()>=20 && patient[s].getWeight_killos()<=42 &&
+                    patient[s].getWeight_pounds()>=41 && patient[s].getWeight_pounds()<=92) {
                 return true;
                 
             }else{
                 return false;
             }           
             
-        }else if(patient[p].getAge()>12){
+        }else if(patient[s].getAge()>12){
             
             
-            if (patient[p].getRespiratory_rate()>=12 && patient[p].getRespiratory_rate()<=20 && 
-                    patient[p].getHeart_rate()>=55 && patient[p].getHeart_rate()<=105 && 
-                    patient[p].getBlood_pressure()>=110 && patient[p].getBlood_pressure()<=120 &&
-                    patient[p].getWeight_killos()>=50 &&
-                    patient[p].getWeight_pounds()>=110 ) {
+            if (patient[s].getRespiratory_rate()>=12 && patient[s].getRespiratory_rate()<=20 && 
+                    patient[s].getHeart_rate()>=55 && patient[s].getHeart_rate()<=105 && 
+                    patient[s].getBlood_pressure()>=110 && patient[s].getBlood_pressure()<=120 &&
+                    patient[s].getWeight_killos()>=50 &&
+                    patient[s].getWeight_pounds()>=110 ) {
                 return true;
             }else{
                 return false;
