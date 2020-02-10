@@ -35,23 +35,25 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="availiblityjTextField" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <Component id="createproductjTextField" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="productnamejTextField" min="-2" pref="200" max="-2" attributes="0"/>
                                   <Component id="pricejTextField" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                                   <Component id="descriptionjTextField" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="340" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="backjButton" min="-2" pref="157" max="-2" attributes="0"/>
-                                  <Component id="createproductjButton" min="-2" pref="157" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="createproductjButton" min="-2" pref="157" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="197" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="backjButton" min="-2" pref="157" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,7 +65,7 @@
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                  <Component id="createproductjTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="productnamejTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -82,9 +84,9 @@
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="createproductjButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace pref="69" max="32767" attributes="0"/>
               <Component id="backjButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="57" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,7 +104,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="11"/>
-        <Property name="text" type="java.lang.String" value="CREATE PRODUCT*:"/>
+        <Property name="text" type="java.lang.String" value=" PRODUCT NAME*:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -123,7 +125,7 @@
         <Property name="text" type="java.lang.String" value="DESCRIPTION:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="createproductjTextField">
+    <Component class="javax.swing.JTextField" name="productnamejTextField">
     </Component>
     <Component class="javax.swing.JTextField" name="availiblityjTextField">
       <Events>
@@ -138,6 +140,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="CREATE PRODUCT"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createproductjButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="backjButton">
       <Properties>

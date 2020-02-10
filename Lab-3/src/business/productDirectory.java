@@ -53,4 +53,8 @@ public class productDirectory {
         return null;
         
     }
+
+    public Iterable<Product> getproductDirectory() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

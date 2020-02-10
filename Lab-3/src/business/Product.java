@@ -62,6 +62,11 @@ public class Product {
         return createdon;
     }
     
+    @Override
+    public String toString() {
+        return this.getProductName(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
        
 }
     

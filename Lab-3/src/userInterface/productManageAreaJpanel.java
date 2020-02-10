@@ -6,6 +6,8 @@
 package userInterface;
 
 import business.productDirectory;
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 
 /**
@@ -40,8 +42,18 @@ public class productManageAreaJpanel extends javax.swing.JPanel {
         productmanagejbutton = new javax.swing.JButton();
 
         createproductJbutton.setText("CREATE PRODUCT");
+        createproductJbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createproductJbuttonActionPerformed(evt);
+            }
+        });
 
         productmanagejbutton.setText("MANAGE PRODUCT");
+        productmanagejbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productmanagejbuttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -64,6 +76,23 @@ public class productManageAreaJpanel extends javax.swing.JPanel {
                 .addContainerGap(191, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createproductJbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createproductJbuttonActionPerformed
+        // TODO add your handling code here:
+        createproductJpanel panel = new createproductJpanel(userprocesscontainer, directory);
+     //   Component panel1 = null;
+        userprocesscontainer.add("createproductJpanel", panel);
+        CardLayout layout = (CardLayout) userprocesscontainer.getLayout();
+        layout.next(userprocesscontainer);
+    }//GEN-LAST:event_createproductJbuttonActionPerformed
+
+    private void productmanagejbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productmanagejbuttonActionPerformed
+        // TODO add your handling code here:
+        manageproductJPanel panel1 =new manageproductJPanel(userprocesscontainer, directory);
+        userprocesscontainer.add("manageproductJPanel", panel1);
+        CardLayout layout = (CardLayout) userprocesscontainer.getLayout();
+        layout.next(userprocesscontainer);
+    }//GEN-LAST:event_productmanagejbuttonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

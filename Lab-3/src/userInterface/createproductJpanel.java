@@ -5,17 +5,31 @@
  */
 package userInterface;
 
+import business.Product;
+import business.productDirectory;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Abhi
  */
 public class createproductJpanel extends javax.swing.JPanel {
+     Product product =new Product();
+     private JPanel userprocesscontainer;
+    private productDirectory directory;
+
 
     /**
      * Creates new form createproductJpanel
      */
-    public createproductJpanel() {
+   
+
+    createproductJpanel(JPanel userprocesscontainer, productDirectory directory) {
         initComponents();
+        this.userprocesscontainer= userprocesscontainer;
+        this.directory = directory;
     }
 
     /**
@@ -32,7 +46,7 @@ public class createproductJpanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        createproductjTextField = new javax.swing.JTextField();
+        productnamejTextField = new javax.swing.JTextField();
         availiblityjTextField = new javax.swing.JTextField();
         pricejTextField = new javax.swing.JTextField();
         descriptionjTextField = new javax.swing.JTextField();
@@ -44,7 +58,7 @@ public class createproductJpanel extends javax.swing.JPanel {
         jLabel1.setText("CREATE PRODUCT");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("CREATE PRODUCT*:");
+        jLabel2.setText(" PRODUCT NAME*:");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("AVAILIBLITY*:");
@@ -62,6 +76,11 @@ public class createproductJpanel extends javax.swing.JPanel {
         });
 
         createproductjButton.setText("CREATE PRODUCT");
+        createproductjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createproductjButtonActionPerformed(evt);
+            }
+        });
 
         backjButton.setText("< BACK");
         backjButton.addActionListener(new java.awt.event.ActionListener() {
@@ -91,16 +110,18 @@ public class createproductJpanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(availiblityjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(createproductjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(productnamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(pricejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(descriptionjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(340, 340, 340)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(backjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(createproductjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(createproductjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 197, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(backjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +131,7 @@ public class createproductJpanel extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(createproductjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(productnamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -125,9 +146,9 @@ public class createproductJpanel extends javax.swing.JPanel {
                     .addComponent(descriptionjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(createproductjButton)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(backjButton)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -137,14 +158,79 @@ public class createproductJpanel extends javax.swing.JPanel {
 
     private void backjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButtonActionPerformed
         // TODO add your handling code here:
+        userprocesscontainer.remove(this);
+        CardLayout layout =(CardLayout) userprocesscontainer.getLayout();
+        layout.previous(userprocesscontainer);
     }//GEN-LAST:event_backjButtonActionPerformed
+
+    private void createproductjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createproductjButtonActionPerformed
+        // TODO add your handling code here:
+        String productName; 
+        double price; 
+        int availnumber; 
+        
+        String description = new String();
+        try {
+            productName=productnamejTextField.getText();
+            if(productName==null || productName.isEmpty()){
+                
+                throw new NullPointerException("NO name entered"); 
+                
+          }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Product name is empty");
+            return;
+        }
+        try{
+            description=descriptionjTextField.getText();
+            if(description==null || description.isEmpty()){
+                throw new NullPointerException("No description entered");
+            }
+            
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Description is empty");
+            
+        }
+        try
+           {
+               availnumber=Integer.parseInt(availiblityjTextField.getText());
+           }
+           catch(NumberFormatException e)
+           {
+                JOptionPane.showMessageDialog(null,"please enter valid availability");
+                return;
+           }
+        try
+            {
+                price=Double.parseDouble(pricejTextField.getText());
+            }
+            catch(NumberFormatException e)
+            {
+              //  e.printStackTrace();
+                JOptionPane.showMessageDialog(null,"please enter valid price");
+                return;
+            }
+        
+        product = directory.addProduct();
+        product.setProductName(productName);
+        product.setPrice(price);
+        product.setAvailnumber(availnumber);
+        product.setDescription(description);
+        
+        JOptionPane.showMessageDialog(null,"Product Created Successfully!");
+        availiblityjTextField.setText("");
+        descriptionjTextField.setText("");
+        productnamejTextField.setText("");
+        pricejTextField.setText("");
+        
+        
+    }//GEN-LAST:event_createproductjButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField availiblityjTextField;
     private javax.swing.JButton backjButton;
     private javax.swing.JButton createproductjButton;
-    private javax.swing.JTextField createproductjTextField;
     private javax.swing.JTextField descriptionjTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -152,5 +238,6 @@ public class createproductJpanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField pricejTextField;
+    private javax.swing.JTextField productnamejTextField;
     // End of variables declaration//GEN-END:variables
 }
