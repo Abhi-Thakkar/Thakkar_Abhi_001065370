@@ -524,7 +524,7 @@ public class Lab2P2 {
                 return true;
             }else{
                 return false;
-            }           
+            }          
             
         }
         return true;

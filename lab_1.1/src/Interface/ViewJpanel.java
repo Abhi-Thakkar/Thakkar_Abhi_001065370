@@ -11,7 +11,7 @@ import Business.Product;
  * @author Abhi
  */
 public class ViewJpanel extends javax.swing.JPanel {
-    private Object Availnumtextfield;
+   
 
     /**
      * Creates new form ViewJpanel
@@ -65,6 +65,12 @@ public class ViewJpanel extends javax.swing.JPanel {
         jLabel4.setText("AVAILNUM:");
 
         jLabel5.setText("DESCRIPTION:");
+
+        availnumtextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                availnumtextfieldActionPerformed(evt);
+            }
+        });
 
         nametextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +126,10 @@ public class ViewJpanel extends javax.swing.JPanel {
     private void nametextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nametextfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nametextfieldActionPerformed
+
+    private void availnumtextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availnumtextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_availnumtextfieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -66,6 +66,7 @@ public class MainJframe extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(topJpanel);
 
+        userprocesscontainer.setMinimumSize(new java.awt.Dimension(700, 400));
         userprocesscontainer.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(userprocesscontainer);
 
@@ -75,7 +76,7 @@ public class MainJframe extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 106, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

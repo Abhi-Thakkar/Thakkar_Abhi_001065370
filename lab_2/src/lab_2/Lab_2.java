@@ -103,11 +103,11 @@ public class Lab_2 {
         localaddress.setAddress2(localaddress2);
         String city=new String("City:\t\tBoston");
         localaddress.setCity(city);
-        String state=new String("State\t\tMA");
+        String state=new String("State:\t\tMA");
         localaddress.setState(state);
-        String pincode=new String("Pincode\t\t4321");
+        String pincode=new String("Pincode:\t4321");
         localaddress.setPincode(pincode);
-        String country=new String("State\t\tMassachusetts");
+        String country=new String("Country:\tUnited States");
         localaddress.setCountry(country);
         
         PersonA.setLocaladdress(localaddress);

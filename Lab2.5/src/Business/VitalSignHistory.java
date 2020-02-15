@@ -6,46 +6,49 @@
 package Business;
 
 import java.util.ArrayList;
-
+import Business.VitalSigns;
 /**
  *
- * @author ranranhe
+ * @author chief_kmv
  */
 public class VitalSignHistory {
-
-    private ArrayList<VitalSigns> vitalSignHistory;
-
-    public VitalSignHistory() {
-        this.vitalSignHistory = new ArrayList<VitalSigns>();
-    }
     
-    public VitalSignHistory(ArrayList<VitalSigns> vitalSignHistory) {
+    public VitalSignHistory()
+    {
+     vitalSignHistory = new ArrayList<VitalSigns>();
+    }
+    private ArrayList<VitalSigns> vitalSignHistory;
+    public ArrayList<VitalSigns> getVitalSignHistory() {
+        return vitalSignHistory;
+    }
+
+    public void setVitalSignHistory(ArrayList<VitalSigns> vitalSignHistory) {
         this.vitalSignHistory = vitalSignHistory;
     }
-
-    public ArrayList<VitalSigns> getVitalSignHistory() {
-        return this.vitalSignHistory;
+    
+    
+    public VitalSigns addVitals() {
+    
+        VitalSigns vs = new VitalSigns();
+        vitalSignHistory.add(vs);
+        return vs;
+        
     }
-
-    public void setVitalSignHistory(ArrayList<VitalSigns> history) {
-        this.vitalSignHistory = history;
-    }
-
-    public void addVital(VitalSigns v) {
-        vitalSignHistory.add(v);
-    }
-
-    public void deleteVital(VitalSigns v) {
+    
+    public void deleteVitals(VitalSigns v){
+    
         vitalSignHistory.remove(v);
     }
     
-    public ArrayList<VitalSigns> getAbnormalList(double max, double min) {
-        ArrayList<VitalSigns> list = new ArrayList<VitalSigns>();
-        for (VitalSigns vs : this.getVitalSignHistory()) {
-            if (vs.getBloodPressure() < min || vs.getBloodPressure() > max) {
-                list.add(vs);
+    public ArrayList<VitalSigns> getAbnormalList(double maxbp, double minbp){
+        ArrayList<VitalSigns> abnList = new ArrayList<>();
+        for(VitalSigns vs: vitalSignHistory) {
+            if(vs.getBloodPressure()>maxbp || vs.getBloodPressure()<minbp){
+                abnList.add(vs);
+                
             }
         }
-        return list;
+        return(abnList);
     }
+    
 }

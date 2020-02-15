@@ -7,30 +7,44 @@ package Interface;
 
 import Business.VitalSignHistory;
 import Business.VitalSigns;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author 123
+ * @author chief_kmv
  */
 public class ViewVitalJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewPanel
+     * Creates new form ViewVitalJPanel
      */
     private VitalSignHistory vsh;
-
     public ViewVitalJPanel(VitalSignHistory vsh) {
-        initComponents();
+            initComponents();
         this.vsh = vsh;
         populateTable();
+    }
+    public void populateTable(){
+    DefaultTableModel dtm = (DefaultTableModel)tblAbnormalSigns.getModel();
+    dtm.setRowCount(0);
+    
+    for (VitalSigns vs : vsh.getVitalSignHistory()){
         
-        tempTextField.setEnabled(false);
-        bloodTextField.setEnabled(false);
-        pulseTextField.setEnabled(false);
-        dateTextField.setEnabled(false);
+        Object row[] = new Object[2];
+        row[0] = vs;
+        row[1] = vs.getBloodPressure();
+        dtm.addRow(row);    
+    }
+    }
+    
+    private void setFieldEnabled(boolean b){
+        
+        txtTemperature.setEnabled(b);
+        txtBloodPressure.setEnabled(b);
+        txtPulse.setEnabled(b);
+        txtDate.setEnabled(b);
+                
     }
 
     /**
@@ -42,256 +56,284 @@ public class ViewVitalJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        vitalSignsTable = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        detailButton = new javax.swing.JButton();
-        deleteButton = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        bloodTextField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        dateTextField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        tempTextField = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        pulseTextField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblAbnormalSigns = new javax.swing.JTable();
+        ViewDetails_Button = new javax.swing.JButton();
+        Delete_Button = new javax.swing.JButton();
+        txtBloodPressure = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        updateButton = new javax.swing.JButton();
+        txtPulse = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtDate = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtTemperature = new javax.swing.JTextField();
+        Update_Button = new javax.swing.JButton();
+        Confirm_Update = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(650, 800));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel1.setText("View Vital Sign");
 
-        vitalSignsTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblAbnormalSigns.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Date", "Blood Pressure"
             }
-        ));
-        jScrollPane1.setViewportView(vitalSignsTable);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false
+            };
 
-        jLabel1.setFont(new java.awt.Font("宋体", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("View Vital Sign");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblAbnormalSigns);
 
-        detailButton.setText("Details");
-        detailButton.addActionListener(new java.awt.event.ActionListener() {
+        ViewDetails_Button.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ViewDetails_Button.setText("View Details");
+        ViewDetails_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                detailButtonActionPerformed(evt);
+                ViewDetails_ButtonActionPerformed(evt);
             }
         });
 
-        deleteButton.setText("Delete");
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+        Delete_Button.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Delete_Button.setText("Delete");
+        Delete_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonActionPerformed(evt);
+                Delete_ButtonActionPerformed(evt);
             }
         });
 
-        bloodTextField.addActionListener(new java.awt.event.ActionListener() {
+        txtBloodPressure.setEnabled(false);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Blood Pressure");
+
+        txtPulse.setEnabled(false);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Pulse");
+
+        txtDate.setEnabled(false);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Date");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Temperature");
+
+        txtTemperature.setEnabled(false);
+
+        Update_Button.setText("Update");
+        Update_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bloodTextFieldActionPerformed(evt);
+                Update_ButtonActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel4.setText("Pulse:");
-
-        dateTextField.addActionListener(new java.awt.event.ActionListener() {
+        Confirm_Update.setText("Confirm");
+        Confirm_Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateTextFieldActionPerformed(evt);
+                Confirm_UpdateActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel3.setText("Bloodpressure:");
-
-        tempTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tempTextFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel5.setText("Date: ");
-
-        pulseTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pulseTextFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel2.setText("Temperature: ");
-
-        updateButton.setText("Update");
-        updateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(223, 223, 223)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(350, 350, 350)
+                                .addComponent(jLabel1)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(318, 318, 318)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(ViewDetails_Button)
+                                    .addGap(40, 40, 40)
+                                    .addComponent(Delete_Button))
+                                .addComponent(txtPulse, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Update_Button)
+                                .addComponent(Confirm_Update))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(284, 284, 284)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2))))
+                .addContainerGap(244, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ViewDetails_Button)
+                    .addComponent(Delete_Button))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Update_Button)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtBloodPressure, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtPulse, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(Confirm_Update)
+                .addGap(162, 162, 162))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSeparator1)
-                        .addContainerGap())
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(49, 49, 49)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pulseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tempTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bloodTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(139, 139, 139)
-                                .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(detailButton, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                                .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(updateButton))
-                        .addGap(13, 13, 13))))
+            .addGap(0, 964, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(detailButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteButton)
-                        .addGap(10, 10, 10)
-                        .addComponent(updateButton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tempTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bloodTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pulseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addContainerGap(251, Short.MAX_VALUE))
+            .addGap(0, 712, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void detailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailButtonActionPerformed
-        int selectedRow = vitalSignsTable.getSelectedRow();
-
-        if (selectedRow >= 0) {
-            VitalSigns vs = (VitalSigns) vitalSignsTable.getValueAt(selectedRow, 0);
-            tempTextField.setText(vs.getTemperature() + "");
-            bloodTextField.setText(vs.getBloodPressure() + "");
-            pulseTextField.setText(vs.getPulse() + "");
-            dateTextField.setText(vs.getDate());
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a row.");
+    private void ViewDetails_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewDetails_ButtonActionPerformed
+        // TODO add your handling code here:
+        int selectedrow = tblAbnormalSigns.getSelectedRow();
+        if(selectedrow >= 0){
+            VitalSigns vs = (VitalSigns)tblAbnormalSigns.getValueAt(selectedrow,0);
+            txtBloodPressure.setText(String.valueOf(vs.getBloodPressure()));
+            txtTemperature.setText(String.valueOf(vs.getTemperature()));
+            txtPulse.setText(String.valueOf(vs.getPulse()));
+            txtDate.setText(vs.getDate());
         }
-    }//GEN-LAST:event_detailButtonActionPerformed
+        else
+            JOptionPane.showMessageDialog(null,"select row");
+    }//GEN-LAST:event_ViewDetails_ButtonActionPerformed
 
-    private void bloodTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bloodTextFieldActionPerformed
+    private void Delete_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bloodTextFieldActionPerformed
-
-    private void dateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dateTextFieldActionPerformed
-
-    private void tempTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tempTextFieldActionPerformed
-
-    private void pulseTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pulseTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pulseTextFieldActionPerformed
-
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        int selectedRow = vitalSignsTable.getSelectedRow();
-
-        if (selectedRow >= 0) {
-            VitalSigns vs = (VitalSigns) vitalSignsTable.getValueAt(selectedRow, 0);
-            vsh.deleteVital(vs);
-            JOptionPane.showMessageDialog(null, "Vital Sign deleted.");
+        int selectedrow = tblAbnormalSigns.getSelectedRow();
+        if(selectedrow >= 0)
+        {
+            VitalSigns vs = (VitalSigns)tblAbnormalSigns.getValueAt(selectedrow,0);
+            vsh.deleteVitals(vs);
+            JOptionPane.showMessageDialog(null,"vital sign deleted");
             populateTable();
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a row.");
         }
-        tempTextField.setText("");
-        bloodTextField.setText("");
-        pulseTextField.setText("");
-        dateTextField.setText("");
-    }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        else{
+             JOptionPane.showMessageDialog(null,"select row");
+        }
+
+    }//GEN-LAST:event_Delete_ButtonActionPerformed
+
+    private void Update_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Update_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_updateButtonActionPerformed
+        setFieldEnabled(true);
+        Confirm_Update.setEnabled(true);
 
-    private void populateTable() {
-        DefaultTableModel dtm = (DefaultTableModel) vitalSignsTable.getModel();
-        dtm.setRowCount(0);
-        for (VitalSigns vs : vsh.getVitalSignHistory()) {
-            Object row[] = new Object[2];
-            row[0] = vs;
-            row[1] = vs.getBloodPressure();
-            dtm.addRow(row);
+        int selectRow = tblAbnormalSigns.getSelectedRow();
+
+        if(selectRow>=0){
+            VitalSigns vs= (VitalSigns)tblAbnormalSigns.getValueAt(selectRow,0);
+
+            txtTemperature.setText(vs.getTemperature()+"");
+            txtBloodPressure.setText(vs.getBloodPressure()+"");
+            txtPulse.setText(vs.getPulse()+"");
+            txtDate.setText(vs.getDate());
+
         }
-    }
+        else {
+            JOptionPane.showMessageDialog(null,"Please select a row");
+        }
+    }//GEN-LAST:event_Update_ButtonActionPerformed
+
+    private void Confirm_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Confirm_UpdateActionPerformed
+        // TODO add your handling code here:
+        Confirm_Update.setEnabled(true);
+        int selectRow = tblAbnormalSigns.getSelectedRow();
+        if(selectRow>=0){
+
+            VitalSigns vs = (VitalSigns)tblAbnormalSigns.getValueAt(selectRow,0);
+            vs.setTemperature(Double.parseDouble(txtTemperature.getText()));
+            vs.setBloodPressure(Double.parseDouble(txtBloodPressure.getText()));
+            vs.setPulse(Integer.parseInt(txtPulse.getText()));
+            vs.setDate(txtDate.getText());
+
+            JOptionPane.showMessageDialog(null,"vital signs successfully updated");
+            populateTable();
+            setFieldEnabled(false);
+            Confirm_Update.setEnabled(false);
+        }
+        else JOptionPane.showMessageDialog(null,"Please select a row");
+    }//GEN-LAST:event_Confirm_UpdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bloodTextField;
-    private javax.swing.JTextField dateTextField;
-    private javax.swing.JButton deleteButton;
-    private javax.swing.JButton detailButton;
+    private javax.swing.JButton Confirm_Update;
+    private javax.swing.JButton Delete_Button;
+    private javax.swing.JButton Update_Button;
+    private javax.swing.JButton ViewDetails_Button;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField pulseTextField;
-    private javax.swing.JTextField tempTextField;
-    private javax.swing.JButton updateButton;
-    private javax.swing.JTable vitalSignsTable;
+    private javax.swing.JTable tblAbnormalSigns;
+    private javax.swing.JTextField txtBloodPressure;
+    private javax.swing.JTextField txtDate;
+    private javax.swing.JTextField txtPulse;
+    private javax.swing.JTextField txtTemperature;
     // End of variables declaration//GEN-END:variables
 }
