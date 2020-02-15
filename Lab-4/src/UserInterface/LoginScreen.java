@@ -9,9 +9,11 @@ import Business.Abstract.User;
 import Business.Users.Customer;
 import Business.Users.Supplier;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -92,7 +94,18 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        
+        String password = txtPword.getText();
+        int a= comboUser.getSelectedIndex();
+        if(list.get(a).verify(password)==false){
+            JOptionPane.showMessageDialog(null, "Wrong Password");
+            txtPword.setBorder(new LineBorder(Color.RED));
+        }  
+        else{
+            JOptionPane.showMessageDialog(null, "SignIn Successfully");
+            CardLayout layout =(CardLayout)panelRight.getLayout();
+            panelRight.add(new SuccessScreen(list.get(a)));
+            layout.next(panelRight);
+        }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     
@@ -103,6 +116,14 @@ public class LoginScreen extends javax.swing.JPanel {
         comboUser.removeAllItems();
         for(User user : list){
             comboUser.addItem(user);
+        }
+        try{
+            int n= comboUser.getSelectedIndex();
+            String s = list.get(n).getRole();
+            txtTitle.setText(s+ " Login Screen");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Create a User first!!");
         }
         //only customer or suppliers should be listed based on the selection
     }

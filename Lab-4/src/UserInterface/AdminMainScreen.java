@@ -26,6 +26,7 @@ public class AdminMainScreen extends javax.swing.JPanel {
     private Admin admin;
     public AdminMainScreen(JPanel panelRight, Admin admin) {
         initComponents();
+        
         this.panelRight = panelRight;
         this.admin = admin;
         populate();
@@ -127,7 +128,7 @@ public class AdminMainScreen extends javax.swing.JPanel {
             Customer c = (Customer)u;
             Object[] row = new Object[dtm1.getColumnCount()];
             row[0]=c;
-            //row[1]=c.getDirectory();
+            row[1]=String.valueOf(User.getDate());
             dtm1.addRow(row);
         }
         

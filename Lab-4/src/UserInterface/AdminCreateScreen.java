@@ -22,6 +22,8 @@ import javax.swing.JPanel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import UserInterface.AdminMainScreen;
+import javax.swing.JCheckBox;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -53,14 +55,14 @@ public class AdminCreateScreen extends javax.swing.JPanel {
         buttonGroup1 = new javax.swing.ButtonGroup();
         btnCreate = new javax.swing.JButton();
         txtUser = new javax.swing.JTextField();
-        txtPword = new javax.swing.JTextField();
-        txtRePword = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         radioCustomer = new javax.swing.JRadioButton();
         radioSupplier = new javax.swing.JRadioButton();
         btnBack = new javax.swing.JButton();
+        txtPword = new javax.swing.JTextField();
+        txtRePword = new javax.swing.JTextField();
 
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -106,20 +108,20 @@ public class AdminCreateScreen extends javax.swing.JPanel {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPword, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRePword, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                            .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(radioSupplier)
-                                    .addComponent(radioCustomer)))))
+                                    .addComponent(radioCustomer)))
+                            .addComponent(txtPword)
+                            .addComponent(txtRePword)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(btnBack)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,47 +134,131 @@ public class AdminCreateScreen extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addComponent(txtPword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtRePword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(txtRePword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(radioCustomer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(radioSupplier)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCreate)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
             // TODO add your handling code here:
-        String Name;
+        String Username;
         String Password;
         String Repassword;
         String user_radio;
         
         
-        Name = txtUser.getText();
+        Username = txtUser.getText();
         Password = txtPword.getText();
         Repassword = txtRePword.getText();
+        
+        try {
+           
+            if(Username==null || Username.isEmpty()){
+                throw new NullPointerException("No name entered");
+                
+                
+            }else if(Pattern.matches("^[a-zA-Z0-9]+_[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+$", Username)==false){
+                throw new Exception("not a valid name");
+                
+            }
+           
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Username is not entered");
+            txtUser.setBorder(new LineBorder(Color.RED));
+            return;
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Enter valid Username");
+            txtUser.setBorder(new LineBorder(Color.RED));
+            return;
+        }
+        
+       
+        try {
+            
+            if(Password==null ||  Password.isEmpty()){
+                throw new NullPointerException("No password entered");
+                
+            }else if(Pattern.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).{6,30}$", Password)==false){
+                throw new Exception("not valid password");
+            }
+            
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Password is not entered");
+            txtUser.setBorder(new LineBorder(Color.BLACK,0));
+            txtPword.setBorder(new LineBorder(Color.RED));
+            
+            return;
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Enter valid passsword");
+            txtUser.setBorder(new LineBorder(Color.BLACK,0));
+             txtPword.setBorder(new LineBorder(Color.RED));
+            return;
+        }
+        
+        
+        try {
+            if(Password.equals(Repassword)==false){
+                throw new NullPointerException("not matching");
+                
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null,"Passwords doesnot match");
+             txtRePword.setBorder(new LineBorder(Color.RED));
+             txtUser.setBorder(new LineBorder(Color.BLACK,0));
+            return;
+        }
+        
+       try {
+             if(radioCustomer.isSelected()==false && radioSupplier.isSelected()==false){
+                 throw new Exception("nothing is selected");
+            
+        }
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Please select any one of the Checkbox");
+             txtPword.setBorder(new LineBorder(Color.BLACK,0));
+              txtRePword.setBorder(new LineBorder(Color.BLACK,0));
+            return;
+            
+        }
+        
         
         
         if(radioCustomer.isSelected()){
             user_radio = "Customer";
-            Customer customer= new Customer(Password, Name);
+            Customer customer= new Customer(Password, Username);
             admin.getCustDir().getCustomerList().add(customer);
             
         }
         else if(radioSupplier.isSelected()){
             user_radio = "Suppliers";
-            Supplier supp=new Supplier(Password, Name);
+            Supplier supp=new Supplier(Password, Username);
             admin.getSuppDir().getSupplierList().add(supp);
         
         }
+        
+        JOptionPane.showMessageDialog(null, "User created Successfully");
+        
+        txtUser.setText("");
+        txtPword.setText("");
+        txtRePword.setText("");
+        buttonGroup1.clearSelection();
+         txtPword.setBorder(new LineBorder(Color.BLACK,0));
+          txtRePword.setBorder(new LineBorder(Color.BLACK,0));
+           txtUser.setBorder(new LineBorder(Color.BLACK,0));
         
         //SupplierDirectory supplier = new SupplierDirectory();
         
